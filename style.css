@@ -1,0 +1,421 @@
+/* -----------------------------
+   1. ベーススタイル
+----------------------------- */
+body {
+  font-family: 'Zen Maru Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+  background: #f0f7e8 url('https://www.transparenttextures.com/patterns/foggy-birds.png');
+  color: #333;
+  padding: 1rem;
+}
+
+
+a, button {
+  transition: all 0.3s ease;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+
+/* -----------------------------
+   2. レイアウト構造
+----------------------------- */
+main {
+  padding: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  background: #ffffffcc;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
+}
+
+
+/* -----------------------------
+   3. 共通要素
+----------------------------- */
+.image img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 3px solid #8dcf7a;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-stump {
+  display: inline-block;
+  background: #dcc4ab;
+  color: white;
+  font-weight: bold;
+  padding: 0.7rem 1.2rem;
+  border-radius: 50px;
+  border: 4px solid #6b4c2b;
+  box-shadow: inset -2px -4px 0 #8d6741, 3px 5px 0 #6b4c2b;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #2f6b1b !important;
+  text-decoration: none !important;
+}
+
+.button-stump:hover {
+  transform: translateY(2px);
+  box-shadow: inset -1px -2px 0 #8d6741, 1px 2px 0 #6b4c2b;
+}
+
+
+/* -----------------------------
+   4. ヘッダー・ナビゲーション
+----------------------------- */
+header {
+  background-color: #8dcf7a;
+  color: #2f4d2d;
+  padding: 2rem 1rem;
+  text-align: center;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-size: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-bottom: 4px solid #7ab866;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.side-image {
+  width: 80px;
+  height: auto;
+}
+
+.title-text {
+  background-color: #dcedc8;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title-text h1 {
+  font-family: 'Kiwi Maru', serif;
+  font-size: 3rem;
+  color: #ab2105;
+  text-shadow:
+    2px 2px 0 #a5d6a7,
+    4px 4px 0 #558b2f,
+    1px 1px 3px #ccc;
+  margin: 0;
+}
+
+.title-text p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: #3a5d3f;
+}
+
+
+/* -----------------------------
+   5. メインセクション
+----------------------------- */
+
+/* 5-1: お知らせ */
+.notice {
+  background-color: #fff8e1;
+  border-left: 6px solid #ffcc80;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.notice h2 {
+  color: #ff9800;
+  font-size: 1.4rem;
+  margin-top: 0;
+  text-shadow: 1px 1px 1px #ffe0b2;
+}
+
+/* 5-2: 紹介文 */
+.introduction {
+  background-color: #e0f7fa;
+  border: 2px dashed #80cbc4;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.introduction h2 {
+  color: #00796b;
+  font-size: 1.4rem;
+  margin-top: 0;
+  text-shadow: 1px 1px 1px #b2dfdb;
+}
+
+.introduction p {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 5-3: 会の情報 */
+.info {
+  background-color: #f0f4c3;
+  border-left: 6px solid #c0ca33;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(100, 100, 100, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.info h2 {
+  color: #558b2f;
+  font-size: 1.6rem;
+  margin-top: 0;
+  text-shadow: 1px 1px 2px #dce775;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.info-text, .info-map {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.info-text p {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.info-text p::before {
+  content: "\1F4CC";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+}
+
+/* 5-4: 募集セクション */
+.recruit {
+  background-color: #fff3e0;
+  border-left: 8px solid #ffb74d;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(150, 120, 90, 0.1);
+}
+
+.recruit h2 {
+  color: #ef6c00;
+  font-size: 1.6rem;
+  margin-top: 0;
+}
+
+.recruit p {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #5d4037;
+}
+
+
+/* -----------------------------
+   6. ギャラリー
+----------------------------- */
+.gallery-section {
+  background-color: #fefefecc;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
+}
+
+.gallery-section h2 {
+  color: #5d7f4a;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px #c5e1a5;
+}
+
+.gallery-section img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 15px;
+  margin: 1rem auto;
+  display: block;
+  border: 4px solid #aed581;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-section p {
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+
+/* -----------------------------
+   7. フッター
+----------------------------- */
+footer {
+  background-color: #8dcf7a;
+  color: #2f4d2d;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-top: 2px solid #7ab866;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+
+/* -----------------------------
+   8. サブナビゲーション
+----------------------------- */
+.sub-navigation {
+  background-color: #f1f8e9;
+  padding: 1rem;
+  text-align: center;
+  border-top: 2px solid #aed581;
+  border-bottom: 2px solid #aed581;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sub-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-navigation li {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.sub-navigation a {
+  color: #558b2f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.sub-navigation a:hover {
+  color: #33691e;
+  text-decoration: underline;
+}
+
+
+/* -----------------------------
+   9. カレンダー & タブ
+----------------------------- */
+.month-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.month-tabs .tab {
+  background: linear-gradient(#d8e8c0, #b2d49e);
+  border: 3px solid #7ca97d;
+  color: #3e5e3c;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  box-shadow: 2px 4px 0 #6d8b5e;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.month-tabs .tab:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 6px 0 #6d8b5e;
+  background: linear-gradient(#e2f1cd, #bfe0b3);
+}
+
+.month-tabs .tab.active {
+  background: linear-gradient(#a3d27d, #89c36e);
+  color: white;
+  border-color: #5f854c;
+  box-shadow: inset -2px -2px 4px #7faa6e;
+}
+
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #a5d6a7;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.calendar-table th {
+  background-color: #dcedc8;
+  color: #33691e;
+}
+
+.calendar-table td.training {
+  background-color: #c8e6c9;
+  font-weight: bold;
+  color: #1b5e20;
+}
+.calendar-container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #558b2f;
+}
+
+#calendar {
+  overflow-x: auto;
+}
+table {
+  min-width: 600px;
+}
+.fadeIn {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+
+
+
+
+
+/* -----------------------------
+   10. レスポンシブ対応
+----------------------------- */
+@media screen and (max-width: 600px) {
+  .info-container {
+    flex-direction: column;
+  }
+
+  .info-text, .info-map {
+    min-width: 80%;
+    flex: 1 1 80%;
+  }
+}
+.fadeIn {
+  animation: fadeIn 0.6s ease-in-out;
+}

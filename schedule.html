@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>年間稽古カレンダー | 宇佐合気道会</title>
+
+  <!-- Google Font: 手書き風 -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Zen Maru Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: #f0f7e8 url('https://www.transparenttextures.com/patterns/foggy-birds.png');
+      color: #333;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      background-color: #dcefc8;
+      border: 4px double #88aa66;
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(100, 150, 100, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #4a7023;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+    }
+
+    h1 img {
+      width: 40px;
+      vertical-align: middle;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .selector-group {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .selector-group select {
+      padding: 0.5em 1em;
+      border-radius: 12px;
+      border: 2px solid #a4c39d;
+      background-color: #eaf4d3;
+      font-size: 1rem;
+      box-shadow: 2px 2px 6px rgba(100, 100, 100, 0.2);
+      transition: transform 0.2s;
+      margin: 0 0.5rem;
+    }
+
+    .selector-group select:hover {
+      transform: scale(1.03);
+    }
+
+    #calendar {
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffffdd;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #cdd8b4;
+      padding: 0.6em;
+      text-align: center;
+    }
+
+    th {
+      background-color: #dcefc8;
+      color: #345c1c;
+    }
+
+    .training {
+      background-color: #b8e986;
+      font-weight: bold;
+    }
+
+    .holiday {
+      background-color: #f9d2d2;
+      color: #b22222;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>
+      <img src="https://acnhcdn.com/latest/NpcIcon/npcNmlCat03.png" alt="キャラ">
+      年間稽古カレンダー
+    </h1>
+    <p>水曜・土曜の稽古日は緑色、祝日は赤色で表示されます。</p>
+  </header>
+
+  <div class="selector-group">
+    <label for="year-select">年:</label>
+    <select id="year-select"></select>
+
+    <label for="month-select">月:</label>
+    <select id="month-select">
+      <option value="0">1月</option>
+      <option value="1">2月</option>
+      <option value="2">3月</option>
+      <option value="3">4月</option>
+      <option value="4">5月</option>
+      <option value="5">6月</option>
+      <option value="6">7月</option>
+      <option value="7">8月</option>
+      <option value="8">9月</option>
+      <option value="9">10月</option>
+      <option value="10">11月</option>
+      <option value="11">12月</option>
+    </select>
+   
+  </div>
+
+  <div id="calendar"></div>
+<div class="sub-navigation">
+  <ul>
+    <li><a href="usaaikidou.html" class="button-stump">稽古予定を見る</a></li> 
+    <li><a href="past.html" class="button-stump">過去の活動を見る</a></li>
+  </ul>
+</div>
+  <footer>
+    <p>&copy; 2025 宇佐合気道会</p>
+  </footer>
+
+  <script>
+    const yearSelect = document.getElementById("year-select");
+    const monthSelect = document.getElementById("month-select");
+    const calendarDiv = document.getElementById("calendar");
+
+    const holidays = {
+      "0": [1],           // 1月: 元日
+      "4": [3, 4, 5],     // 5月: 憲法記念日など
+      "11": [23],         // 12月: 天皇誕生日（例）
+    };
+
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear - 1; y <= currentYear + 3; y++) {
+      const option = document.createElement("option");
+      option.value = y;
+      option.textContent = `${y}年`;
+      yearSelect.appendChild(option);
+    }
+    
+
+    function generateCalendar(year, month) {
+      const date = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0).getDate();
+      let html = `<h2>${year}年 ${month + 1}月</h2>`;
+      html += `<table><thead><tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr></thead><tbody>`;
+
+      let week = [];
+      for (let i = 0; i < date.getDay(); i++) {
+        week.push("<td></td>");
+      }
+
+      for (let day = 1; day <= lastDay; day++) {
+        const dayOfWeek = new Date(year, month, day).getDay();
+        let classes = "";
+
+        if (holidays[month] && holidays[month].includes(day)) {
+          classes = "holiday";
+        } else if (dayOfWeek === 3 || dayOfWeek === 6) {
+          classes = "training";
+        }
+
+        week.push(`<td class="${classes}">${day}</td>`);
+
+        if (dayOfWeek === 6 || day === lastDay) {
+          while (week.length < 7) week.push("<td></td>");
+          html += `<tr>${week.join("")}</tr>`;
+          week = [];
+        }
+      }
+
+      html += "</tbody></table>";
+      calendarDiv.innerHTML = html;
+
+      //JavaScrupt アニメーション用に一瞬でfadeInクラスを付け直す
+      calendarDiv.classList.remove("fadeIn");
+      void calendarDiv.offsetWidth; // 強制再描画
+      calendarDiv.classList.add("fadeIn");
+    }
+
+    // 初期表示
+    yearSelect.value = currentYear;
+    monthSelect.value = new Date().getMonth();
+    generateCalendar(currentYear, new Date().getMonth());
+
+    // イベント
+    yearSelect.addEventListener("change", () => {
+      generateCalendar(Number(yearSelect.value), Number(monthSelect.value));
+    });
+
+    monthSelect.addEventListener("change", () => {
+      generateCalendar(Number(yearSelect.value), Number(monthSelect.value));
+    });
+  </script>
+
+  
+</body>
+</html>
