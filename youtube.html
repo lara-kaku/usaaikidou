@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>動画ギャラリー｜宇佐合気道会</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts: Kiwi Maru と Zen Maru Gothic の両方を読み込みます -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="title-text">
+                <div id="main-title">
+                    <span class="char-block color-orange">宇</span>
+                    <span class="char-block color-green">佐</span>
+                    <span class="char-block color-blue">合</span>
+                    <span class="char-block color-pink">気</span>
+                    <span class="char-block color-yellow">道</span>
+                    <span class="char-block color-purple">会</span>
+                </div>
+                <div id="sub-title">
+                    <span class="char-block color-blue">合気道お勧め動画</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="youtube-gallery">
+            <h1>合気会系の合気道YouTubeチャンネル</h1>
+            <p>合気会や祥平塾の、合気道の技を紹介する動画を公開しています。ぜひご覧ください！</p>
+            
+            <!-- 1つ目の動画: widthとheight属性を削除し、style.cssに任せる -->
+            <div class="youtube-video-container">
+                <iframe src="https://www.youtube.com/embed/PoLjJb8uJo0?si=bviEPBd_KhPmU8Jw" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                <p>合気会　本部道場　植芝守央　演武</p> 
+            </div>
+            <!-- 2つ目の動画 -->
+            <div class="youtube-video-container">
+                <iframe src="https://www.youtube.com/embed/SmJQc5gQSvQ?si=vm6liTzgjw3sD8tQ" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                <p>祥平塾　F-Lab　解説動画</p>
+            </div>
+            <!-- 3つ目の動画 -->
+            <div class="youtube-video-container">
+                <iframe src="https://www.youtube.com/embed/4vjw88UffYw?si=ZUZjstYXUNC7LAHJ" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                <p>中村信昭先生の１００本投げ動画</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- サブナビゲーションの修正: ul, li で囲む -->
+    <div class="sub-navigation">
+        <ul>
+            <li><a href="index.html" class="button-stump">トップページに戻る</a></li>
+            <li><a href="past.html" class="button-stump">過去の活動を見る</a></li>
+        </ul>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 宇佐合気道会</p>
+    </footer>
+</body>
+</html>

@@ -1,91 +1,310 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>宇佐合気道会</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>メイン｜宇佐合気道会</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts: Kiwi Maru と Zen Maru Gothic の両方を読み込みます -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-  <div class="header-container">
-    <img src="img/aikido_man.png" alt="合気道男性" class="side-image">
-    <div class="title-text">
-      <h1>宇佐合気道会</h1>
-      
-    </div>
-    <img src="img/aikido_woman.png" alt="合気道女性" class="side-image">
-  </div>
-</header>
-  
+    <header>
+        <div class="header-container">
+            <div class="title-text">
+                <div id="main-title">
+                    <span class="char-block color-orange">宇</span>
+                    <span class="char-block color-green">佐</span>
+                    <span class="char-block color-blue">合</span>
+                    <span class="char-block color-pink">気</span>
+                    <span class="char-block color-yellow">道</span>
+                    <span class="char-block color-purple">会</span>
+                </div>
+                <div id="sub-title">
+                    <span class="char-block color-pink">ホームページにようこそ</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="introduction">
+            <h1>ごあいさつ</h1>
+            <p>宇佐合気道会は合気道祥平塾の傘下道場です。</p>
+            <p>宇佐合気道会は、１９９２年（平成４年）宇佐警察署に勤務されいていた合気道経験者の豊田氏が発起人となり警察署の道場をお借りして数人で稽古を始めました。</p>
+            <p>翌年には宇佐合気道会として正式に発足し、稽古場所も現在地になりました。</p>
+            <p>当会は発足より祥平塾菅沼守人師範のご指導のもと稽古を続けています。菅沼師範の講習会や毎週水曜日と土曜日の稽古を通して合気道の楽しさや奥深さを体感しています。</p>
+            
+            
+        </section>
+    </main> <!-- mainタグをここで閉じます。「活動紹介」と「会員募集」の間に背景が見えるようになります -->
 
-  <main>
-  <section class="recruit">
-  <h2>会員募集</h2>
-  <p>初心者歓迎　家族での参加もお待ちしています。</p>
-  <p>宇佐合気道会では、新しい仲間をいつでも歓迎しています。</p>
-  <p>「運動不足を解消したい」「家族で何か始めたい」など、きっかけは何でもOKです！</p>
-  <p>体験・見学は無料ですので、お気軽にご連絡ください。</p>
-  <p><strong>会費：</strong> 社会人 2,000円／月、学生 1,000円／月</p>
-</section>
- 
-  <section class="notice">
-  <h2>お知らせ</h2>
-  <p>6月は祝日の影響で、6月〇日（土）の稽古はお休みです。</p>
-  <p>体験希望の方は事前にご連絡ください。</p>
-</section>
+    <!-- 各セクション間に背景が見えるようにするため、ここからmainタグの外に配置します -->
 
-    <section class="image">
-      <img src="aikido_sample.jpg" alt="稽古の様子" />
+    <section class="recruit content-block"> <!-- content-blockクラスを適用 -->
+        <h1>会員募集</h1>
+        <p>初心者大歓迎　家族・親子・兄弟姉妹・祖父母孫での参加もお待ちしています。</p>
+        <p>年齢・性別関係なく、楽しく緩やかに合気道を行っています。</p>
+        <p>宇佐合気道会では、新しい仲間をいつでも歓迎しています。</p>
+        <p>「運動不足を解消したい」「家族で何か始めたい」など、きっかけは何でもOKです！</p>
+        <p>体験・見学は無料です。</p>
+        <p>興味・関心を持った方は迷わずお気軽にお問い合わせください。</p>
+        <p><strong>会費： 社会人 2,000円／月、学生 1,000円／月</strong></p>
+        
+        <section class="contact"> <!-- お問い合わせセクションは会員募集の中に残します -->
+            <h2>お問い合わせ</h2>
+            <p>090-○○○○-○○○○（永家まで）</p>
+        </section>
     </section>
-<section class="introduction">
-  <h2>活動紹介</h2>
-  <p>宇佐合気道会は、年齢・性別関係なく、楽しく緩やかに合気道を行っています。</p>
-  <p>興味・関心を持った方は迷わずお気軽にお問い合わせください。</p>
-  
-</section>
-<section class="info">
-  <h2>稽古時間・稽古場所</h2>
-  <div class="info-container">
-    <div class="info-text">
-      <p>練習日：毎週水・土曜日 19時〜20時</p>
-      <p>場所：宇佐市総合運動公園内 武道場</p>
-      <p>住所：〒879-0452 大分県宇佐市川部1591</p>
-      <p>電話：0978-37-3335</p>
-    </div>
-    <div class="info-map">
-      <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.0809633988135!2d131.3599911!3d33.5386907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354408ad205b065d%3A0x37b9b80e85fa82c1!2z44CSODc5LTA0NTIg5aSn6Ziq5bqc5biC5a6u5Yy65bed55Sw77yS5p2x5bGx77yR!5e0!3m2!1sja!2sjp!4v1716978266500!5m2!1sja!2sjp"
-    width="100%"
-    height="300"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-    </div>
-  </div>
-</section>
 
-   
-
-    <section class="contact">
-      <h2>お問い合わせ</h2>
-      <p>090-○○○○-○○○○（永家まで）</p>
+    <section class="image content-block"> <!-- content-blockクラスを適用 -->
+        <img src="稽古風景１.png" alt="稽古の様子" />
     </section>
-  </main>
 
-<div class="sub-navigation">
-  <ul>
-    <li><a href="schedule.html" class="button-stump">稽古予定を見る</a></li> 
-    <li><a href="past.html" class="button-stump">過去の活動を見る</a></li>
-  </ul>
-</div>
+    <section class="info content-block"> <!-- content-blockクラスを適用 -->
+        <h2>稽古時間・稽古場所</h2>
+        <div class="info-container">
+            <div class="info-text">
+                <p>練習日：毎週水・土曜日 19時〜20時</p>
+                <p>場所：宇佐市総合運動公園内 武道場</p>
+                <p>住所：〒879-0452 大分県宇佐市川部1591</p>
+                <p>電話：0978-37-3335</p>
+            </div>
+            <div class="info-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.0809633988135!2d131.3599911!3d33.5386907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354408ad205b065d%3A0x37b9b80e85fa82c1!2z44CSODc5LTA0NTIg5aSn6Ziq5bqc5biC5a6u5Yy65bed55Sw77yS5p2x5bGx77yR!5e0!3m2!1sja!2sjp!4v1716978266500!5m2!1sja!2sjp"
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="monthly-notice" class="notice content-block"> <!-- content-blockクラスを適用 -->
+        <h2>お知らせ</h2>
+    </section>
+
+    <section class="content-block"> <!-- content-blockクラスを適用 -->
+        <h2>稽古日程</h2>
+        <div class="controls">
+            <label for="year-select">年:</label>
+            <select id="year-select"></select>
+            <label for="month-select">月:</label>
+            <select id="month-select">
+                <option value="0">1月</option>
+                <option value="1">2月</option>
+                <option value="2">3月</option>
+                <option value="3">4月</option>
+                <option value="4">5月</option>
+                <option value="5">6月</option>
+                <option value="6">7月</option>
+                <option value="7">8月</option>
+                <option value="8">9月</option>
+                <option value="9">10月</option>
+                <option value="10">11月</option>
+                <option value="11">12月</option>
+            </select>
+        </div>
+        <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>
+    </section>
+
+    <!-- サブナビゲーション -->
+    <section class="sub-navigation">
+        <ul>
+            <li><a href="past.html" class="button-stump">過去の活動を見る</a></li>
+            <li><a href="youtube.html" class="button-stump">動画を見る</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 宇佐合気道会</p>
+    </footer>
+
+    <script>
+        const yearSelect = document.getElementById("year-select");
+        const monthSelect = document.getElementById("month-select");
+        const calendarDiv = document.getElementById("calendar");
+        const monthlyNoticeSection = document.getElementById("monthly-notice");
+
+        // holidaysオブジェクトはeventDatesに統合されたため、削除しました。
+        // const holidays = {
+        //     "0": [1],        // 1月1日
+        //     "1": [11],       // 2月11日
+        //     "4": [3, 4, 5],  // 5月3日～5日
+        //     "11": [23]       // 12月23日
+        // };
+
+        const eventDates = {
+            // 現在の日付は2025年6月9日なので、2025年の例をいくつか追加します
+            "2025-01-01": { type: "holiday", text: "元日" },
+            "2025-01-13": { type: "holiday", text: "成人の日" },
+            "2025-02-11": { type: "holiday", text: "建国記念の日" },
+            "2025-03-20": { type: "holiday", text: "春分の日" },
+            "2025-04-29": { type: "holiday", text: "昭和の日" },
+            "2025-05-03": { type: "holiday", text: "憲法記念日" },
+            "2025-05-04": { type: "holiday", text: "みどりの日" },
+            "2025-05-05": { type: "holiday", text: "こどもの日" },
+            "2025-05-06": { type: "holiday", text: "振替休日" }, // 5月6日振替休日
+
+            // 現在のお知らせの例
+            "2025-06-14": { type: "closed", text: "稽古休み" }, // 6月14日（土）は稽古はお休みです
+            "2025-06-29": { type: "event", text: "昇級昇段審査会" }, // 6月29日（日）は宇佐道場にて昇級昇段審査会が行われます
+
+            // 今後のイベント例（適宜追加・変更してください）
+            "2025-07-21": { type: "holiday", text: "海の日" },
+            "2025-08-11": { type: "holiday", text: "山の日" },
+            "2025-08-13": { type: "closed", text: "お盆休み" },
+            "2025-08-14": { type: "closed", text: "お盆休み" },
+            "2025-08-15": { type: "closed", text: "お盆休み" },
+            "2025-09-15": { type: "holiday", text: "敬老の日" },
+            "2025-09-23": { type: "holiday", text: "秋分の日" },
+            "2025-10-13": { type: "holiday", text: "スポーツの日" },
+            "2025-11-03": { type: "holiday", text: "文化の日" },
+            "2025-11-23": { type: "holiday", text: "勤労感謝の日" },
+            "2025-11-24": { type: "holiday", text: "振替休日" },
+            "2025-12-31": { type: "closed", text: "年末休み" },
+        };
+
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth();
+
+        // 年のセレクト作成（±5年）
+        for (let y = currentYear - 5; y <= currentYear + 5; y++) {
+            const opt = document.createElement("option");
+            opt.value = y;
+            opt.textContent = y + "年";
+            if (y === currentYear) opt.selected = true;
+            yearSelect.appendChild(opt);
+        }
+
+        // 月の初期値を現在の月に
+        monthSelect.value = currentMonth;
+
+        const days = ["日", "月", "火", "水", "木", "金", "土"];
+
+        function renderCalendar(year, month) {
+            const date = new Date(year, month, 1);
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            let html = `<table id="calendar-table"><thead><tr>`;
+            for (let d of days) {
+                html += `<th>${d}</th>`;
+            }
+            html += `</tr></thead><tbody><tr>`;
+
+            for (let i = 0; i < date.getDay(); i++) {
+                html += `<td></td>`;
+            }
+
+            for (let d = 1; d <= lastDate; d++) {
+                const current = new Date(year, month, d);
+                const day = current.getDay();
+                // ISO 8601形式のYYYY-MM-DDを生成
+                const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${d.toString().padStart(2, '0')}`;
+
+                let classes = [];
+                let additionalText = ''; // 日付の下に表示するテキスト
+
+                // 稽古日（水曜日・土曜日）の判定
+                const isTrainingDay = (day === 3 || day === 6);
+
+                // イベントデータからの情報取得
+                const eventInfo = eventDates[formattedDate];
+                const isClosedDay = eventInfo && eventInfo.type === "closed"; // 稽古休みの日
+                const isHoliday = eventInfo && eventInfo.type === "holiday"; // 祝日
+
+                // 曜日のクラスを追加
+                if (day === 0) classes.push("sun");
+                if (day === 6) classes.push("sat");
+
+                // 稽古日の処理
+                if (isTrainingDay) {
+                    classes.push("training");
+                    additionalText = '<span class="training-text">稽古日</span>';
+                }
+
+                // 祝日の処理（最優先）
+                if (isHoliday) {
+                    classes = ["holiday"]; // 祝日の場合は、他のクラスをリセット
+                    if (day === 0) classes.push("sun"); // 祝日が日曜の場合は日曜のクラスも追加
+                    if (day === 6) classes.push("sat"); // 祝日が土曜の場合は土曜のクラスも追加
+                    additionalText = `<span class="event-text">${eventInfo.text}</span>`; // 祝日名を表示
+                } else if (isClosedDay) { // クローズ日（稽古休み）の表示（祝日より優先度が低い）
+                    classes.push("closed-day"); // クローズ用のクラスを追加
+                    additionalText = `<span class="closed-text">${eventInfo.text}</span>`; // クローズ理由を表示
+                } else if (eventInfo && eventInfo.type === "event") { // その他のイベント
+                    classes.push("event");
+                    additionalText = `<span class="event-text">${eventInfo.text}</span>`;
+                }
+                
+                // 今日
+                const isToday = current.toDateString() === new Date().toDateString();
+                if (isToday) classes.push("today");
+
+                html += `<td class="${classes.join(" ")}">${d}${additionalText}</td>`;
+                if (day === 6 && d !== lastDate) html += `</tr><tr>`;
+            }
+
+            html += `</tr></tbody></table>`;
+            calendarDiv.innerHTML = html;
+        }
+
+        // 月ごとのお知らせを更新する関数
+        function updateMonthlyNoticeSection(year, month) {
+            let noticeHtml = '<h2>お知らせ</h2>';
+            let hasNotice = false;
+
+            const noticesForCurrentMonth = Object.keys(eventDates)
+                .filter(dateStr => {
+                    const [y, m, d] = dateStr.split('-').map(Number);
+                    return y === year && (m - 1) === month; // 月は0から始まるため -1
+                })
+                .sort(); // 日付順にソート
+
+            if (noticesForCurrentMonth.length > 0) {
+                noticesForCurrentMonth.forEach(dateStr => {
+                    const eventInfo = eventDates[dateStr];
+                    const dateObj = new Date(dateStr);
+                    const displayDate = `${dateObj.getMonth() + 1}月${dateObj.getDate()}日（${days[dateObj.getDay()]}）`;
+                    noticeHtml += `<p><small>${displayDate}は${eventInfo.text}。</small></p>`;
+                    hasNotice = true;
+                });
+            }
+
+            if (!hasNotice) {
+                noticeHtml += '<p><small>今月のお知らせはありません。</small></p>';
+            }
+            monthlyNoticeSection.innerHTML = noticeHtml;
+            // monthlyNoticeSection に .notice クラスを追加（元々あるかもしれませんが念のため）
+            monthlyNoticeSection.classList.add('notice');
+        }
 
 
-  <footer>
-    <p>&copy; 2025 宇佐合気道会</p>
-  </footer>
+        // 初期表示
+        renderCalendar(currentYear, currentMonth);
+        updateMonthlyNoticeSection(currentYear, currentMonth); // 初期表示時のお知らせ
+
+        yearSelect.addEventListener("change", () => {
+            const year = parseInt(yearSelect.value);
+            const month = parseInt(monthSelect.value);
+            renderCalendar(year, month);
+            updateMonthlyNoticeSection(year, month); // 年変更時のお知らせ更新
+        });
+
+        monthSelect.addEventListener("change", () => {
+            const year = parseInt(yearSelect.value);
+            const month = parseInt(monthSelect.value);
+            renderCalendar(year, month);
+            updateMonthlyNoticeSection(year, month); // 月変更時のお知らせ更新
+        });
+    </script>
 </body>
 </html>
