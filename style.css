@@ -13,6 +13,7 @@
 */
 html {
     box-sizing: border-box;
+    font-size: 20px; /* ベースのフォントサイズを20pxに設定 */
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -20,7 +21,7 @@ html {
 
 body {
     font-family: 'Zen Maru Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
-    color: #333; /* 元々の濃いグレー。他の部分で黒を指定するためこのままとします。 */
+    color: #333;
     text-align: center;
     padding: 0; /* body全体のパディングをリセット */
     position: relative;
@@ -28,9 +29,10 @@ body {
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden; /* 横方向のスクロールを強制的に防ぎます */
+    background-color: transparent; /* bodyの背景を明示的に透明に設定 */
 }
 
-/* 背景画像の設定: 宇佐神宮のイラスト */
+/* 背景画像の設定: 稽古風景の写真 */
 body::before {
     content: '';
     position: fixed; /* 画面全体に固定 */
@@ -87,13 +89,45 @@ ul {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+/*揺れる気アイコン*/
+.tree-icon {
+  display: inline-block;
+  animation: sway 2.5s ease-in-out infinite;
+}
+@keyframes sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(7deg); } /* ← 揺れ幅を大きく */
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-7deg); }/* ← 揺れ幅を大きく */
+  100% { transform: rotate(0deg); }
+}
+
+/* 木アイコンを揺らすアニメーション */
+@keyframes swing {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(3deg); }
+  50%  { transform: rotate(-5deg); }
+  75%  { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+/*sihanaionをゆらすアニメーション*/
+.swing-icon {
+width: 60px;         /* サイズはお好みで調整 */
+height: auto;
+border-radius: 50%;
+object-fit: cover;  /* 画像の比率を維持しつつ、はみ出た部分を切り取る */
+vertical-align: middle;
+animation: swing 2s infinite ease-in-out;
+box-shadow: 0 0 5px rgba(0,0,0,0.1);  /* やわらかい影を追加（任意） */
+}
+
 
 
 /* -----------------------------
    2. レイアウト構造
 ----------------------------- */
 main {
-    max-width: 800px; /* PC表示でのメインコンテンツの最大幅 */
+    max-width: 1200px; /* PC表示でのメインコンテンツの最大幅を1200pxに広げる */
     margin: 1rem auto; /* 上下1rem、左右自動（中央揃え）の余白 */
     background: rgba(96, 68, 152, 0.85); /* 半透明の背景色 */
     border-radius: 15px;
@@ -101,31 +135,23 @@ main {
     z-index: 2;
     position: relative;
     box-sizing: border-box; /* パディングを幅に含める */
+    padding: 1.5rem; /* メイン全体のパディング。セクション間の背景色を表示 */
 }
 
 section {
     background: rgba(255, 255, 255, 0.85); /* 半透明の白背景 */
     padding: 1.5rem; /* セクション内のパディング */
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /* セクションの下の余白 */
+    margin-top: 1.5rem; /* セクションの上の余白 */
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
     z-index: 2;
     position: relative;
     box-sizing: border-box; /* パディングを幅に含める */
 }
-
-/* main の外に配置されるセクションのための共通スタイルを追加します */
-.content-block {
-    width: 100%; /* 親要素の幅いっぱいに広げる */
-    max-width: 800px; /* mainと同じ最大幅 */
-    margin: 1.5rem auto; /* 上下に1.5remの余白、左右自動で中央寄せ */
-    background: rgba(255, 255, 255, 0.85); /* sectionの既存背景色を再適用 */
-    padding: 1.5rem; /* sectionの既存パディングを再適用 */
-    border-radius: 15px; /* sectionの既存角丸を再適用 */
-    box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1); /* sectionの既存影を再適用 */
-    z-index: 2;
-    position: relative;
-    box-sizing: border-box;
+/* main内の最初のセクションには上マージンを適用しない（mainのpaddingで十分なため） */
+main section:first-child {
+    margin-top: 0;
 }
 
 
@@ -144,12 +170,12 @@ section {
     background: #dcc4ab;
     color: white; /* ボタンの文字色は白 */
     font-weight: bold;
-    padding: 0.7rem 1.2rem;
+    padding: 0.5rem 0.8rem; /* パディングをさらに小さくする */
     border-radius: 50px;
     border: 4px solid #6b4c2b;
     box-shadow: inset -2px -4px 0 #8d6741, 3px 5px 0 #6b4c2b;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.0rem; /* ボタンのフォントサイズをさらに小さくする */
     color: #2f6b1b !important; /* 強制的に緑系の文字色を適用 */
     text-decoration: none !important; /* 強制的に下線を削除 */
 }
@@ -178,9 +204,9 @@ header {
     box-sizing: border-box; /* パディングを幅に含める */
 }
 h1 {
-    font-size: 2.2em; /* 少し大きく */
+    font-size: 2.4rem; /* H1のフォントサイズ */
     color: #4c8a45;
-    font-weight: 900;
+    font-weight: bold;
 }
 
 .controls {
@@ -188,12 +214,11 @@ h1 {
 }
 
 select {
-    font-size: 1.1em; /* 少し大きく */
+    font-size: 1.2rem; /* セレクトボックスのフォントサイズ */
     padding: 0.4em;
     border-radius: 8px;
     border: 1px solid #c28e8e;
     background-color: #d8f5b9;
-    font-weight: 900;
 }
 
 .title-text {
@@ -212,9 +237,8 @@ select {
 
 .title-text p {
     margin-top: 0.5rem;
-    font-size: 1.3rem; /* 少し大きく */
+    font-size: 1.4rem; /* フォントサイズ */
     color: #3a5d3f;
-    font-weight: 900;
 }
 
 #main-title, #sub-title {
@@ -240,9 +264,9 @@ select {
     box-sizing: border-box; /* パディングを幅に含める */
 }
 
-/* #main-title 内の文字ブロックのサイズと個別の色 */
+/* #main-title 内の文字ブロックのサイズ */
 #main-title .char-block {
-    font-size: 3.8rem; /* 少し大きく */
+    font-size: 4.2rem; /* フォントサイズ */
     border: 3px solid #689F38;
     box-shadow: 0 4px 0 #558B2F, 0 8px 0 rgba(0,0,0,0.2);
 }
@@ -255,9 +279,9 @@ select {
 #main-title .char-block:nth-child(6) { animation-delay: 0.6s; }
 
 
-/* #sub-title 内の文字ブロックのサイズと個別の色 */
+/* #sub-title 内の文字ブロックのサイズ */
 #sub-title .char-block {
-    font-size: 1.6rem; /* 少し大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     background-color: #F06292; /* サブタイトル用の色 */
     border: 3px solid #E91E63;
     box-shadow: 0 4px 0 #C2185B, 0 8px 0 rgba(0,0,0,0.2);
@@ -311,14 +335,13 @@ select {
 
 .notice h2 {
     color: #ff9800;
-    font-size: 1.6rem; /* 1.5remから1.6remに大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-top: 0;
     text-shadow: 1px 1px 1px #ffe0b2;
-    font-weight: 900;
 }
 
-.notice p { /* 追加: 月ごとのお知らせの本文のスタイル */
-    font-size: 1.1rem; /* デスクトップで1.1remに設定 */
+.notice p { /* 月ごとのお知らせの本文のスタイル */
+    font-size: 1.125rem; /* フォントサイズ */
     margin-bottom: 0.8rem;
     color: #000; /* 黒に設定 */
     font-weight: 900; /* 最も太く設定 */
@@ -336,14 +359,13 @@ select {
 
 .introduction h2 {
     color: #00796b;
-    font-size: 1.5rem; /* 少し大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-top: 0;
     text-shadow: 1px 1px 1px #b2dfdb;
-    font-weight: 900;
 }
 
 .introduction p {
-    font-size: 1.1rem; /* 少し大きく */
+    font-size: 1.125rem; /* フォントサイズ */
     margin-bottom: 0.8rem;
     font-weight: bold;
 }
@@ -361,10 +383,9 @@ select {
 
 .info h2 {
     color: #558b2f;
-    font-size: 1.7rem; /* 少し大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-top: 0;
     text-shadow: 1px 1px 2px #dce775;
-    font-weight: 900;
 }
 
 .info-container {
@@ -381,18 +402,19 @@ select {
 }
 
 .info-text p {
-    font-size: 1.2rem; /* 少し大きく */
+    font-size: 1.125rem; /* フォントサイズ */
     margin-bottom: 0.8rem;
-    position: relative;
-    padding-left: 1.5rem;
+    /* ピンアイコンを削除したため、padding-leftは不要です。 */
+    /* position: relative; */
+    /* padding-left: 1.5rem; */
     font-weight: bold;
 }
 
+/* ピンアイコンのスタイルを削除（より確実に非表示にするために display: none; を使用） */
 .info-text p::before {
-    content: "\1F4CC"; /* マップピンの絵文字 */
-    position: absolute;
-    left: 0;
-    top: 0.1rem;
+    content: none; /* ピンアイコンを完全に削除 */
+    display: none; /* 疑似要素自体をレンダリングしない */
+    /* 他のプロパティ（position, left, topなど）は、もしあれば削除するか、親要素のpに影響しないことを確認してください */
 }
 
 /* 5-4: 募集セクション */
@@ -408,42 +430,62 @@ select {
 
 .recruit h2 {
     color: #ef6c00;
-    font-size: 1.7rem; /* 少し大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-top: 0;
-    font-weight: 900;
 }
 
 .recruit p {
-    font-size: 1.1rem; /* 少し大きく */
+    font-size: 1.125rem; /* フォントサイズ */
     margin-bottom: 0.8rem;
     color: #5d4037;
     font-weight: bold;
 }
 
-/* 5-5: お問い合わせセクション */
-.contact { /* .contact が section であることを前提として追加 */
-    background-color: #e3f2fd; /* 少し淡い青系の背景 */
-    border-left: 6px solid #90caf9; /* 青系の左ボーダー */
+/* .contact-info-block のスタイル */
+.contact-info-block {
+    background: rgba(255, 255, 255, 0.95); /* セクションより少し不透明な白 */
     padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(100, 100, 100, 0.15);
-    margin-top: 1.5rem; /* 親セクション内の余白 */
-    box-sizing: border-box;
+    border-radius: 12px; /* 少し小さめの角丸 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 少し控えめな影 */
+    margin-top: 1.5rem; /* 親セクションからの上マージン */
+    margin-bottom: 0.5rem; /* 下の要素との間隔 */
+    border: 1px solid #e0e0e0; /* 薄いボーダー */
 }
 
-.contact h2 {
-    color: #2196f3; /* 青系のタイトル色 */
-    font-size: 1.7rem; /* 少し大きく */
+.contact-info-block h2 {
+    color: #3f51b5; /* 青系の色でお問い合わせを強調 */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-top: 0;
-    text-shadow: 1px 1px 2px #bbdefb;
-    font-weight: 900;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+.contact-info-block p {
+    font-size: 1.125rem; /* フォントサイズ */
+    margin-bottom: 0.5rem;
+    color: #444;
 }
 
-.contact p {
-    font-size: 1.2rem; /* 少し大きく */
+/* .important-notes-block のスタイル */
+.important-notes-block {
+    background: rgba(255, 255, 255, 0.95); /* セクションより少し不透明な白 */
+    padding: 1.5rem;
+    border-radius: 12px; /* 少し小さめの角丸 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 少し控えめな影 */
+    margin-top: 1.5rem; /* 親セクションからの上マージン */
+    margin-bottom: 1.5rem; /* 下の要素との間隔 */
+    border: 1px solid #e0e0e0; /* 薄いボーダー */
+}
+
+.important-notes-block h3 { /* h3 を使用して、お知らせ内の他のh2と区別 */
+    color: #d32f2f; /* 赤系の色で注意事項を強調 */
+    font-size: 1.8rem; /* フォントサイズ */
+    margin-top: 0;
     margin-bottom: 0.8rem;
-    color: #3f51b5;
-    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+.important-notes-block p {
+    font-size: 1.125rem; /* フォントサイズ */
+    margin-bottom: 0.5rem;
+    color: #444;
 }
 
 
@@ -461,34 +503,35 @@ select {
 
 .gallery-section h1 { /* h1に適用されるように新しいルールを追加 */
     color: #5d7f4a;
-    font-size: 1.8rem; /* h2よりも少し大きく */
+    font-size: 2rem; /* フォントサイズ */
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px #c5e1a5;
     font-weight: 900;
 }
 
-.gallery-section h2 { /* h2に適用されるようにしました */
+.gallery-section h2 {
     color: #5d7f4a;
-    font-size: 1.7rem; /* 少し大きく */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px #c5e1a5;
-    font-weight: 900;
 }
 
 .gallery-section img {
     max-width: 100%;
-    border-radius: 12px;
-    border: 3px solid #8dcf7a;
+    border-radius: 15px;
+    margin: 1rem auto;
+    display: block;
+    border: 4px solid #aed581;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .gallery-section p {
-    font-size: 1.1rem; /* 少し大きく */
-    color: #000; /* 黒に変更 */
+    font-size: 1.125rem; /* フォントサイズ */
+    color: #444;
     text-align: center;
     margin-top: 0.5rem;
     margin-bottom: 2rem;
-    font-weight: 900; /* Extra Bold / Black に変更 */
 }
 
 
@@ -508,7 +551,7 @@ footer {
 }
 
 footer p {
-    font-size: 1rem; /* 少し大きく */
+    font-size: 1.125rem; /* フォントサイズ */
     font-weight: bold;
 }
 
@@ -540,10 +583,10 @@ footer p {
 }
 
 .sub-navigation a {
-    color: #000; /* 黒に変更 */
+    color: #558b2f;
     text-decoration: none;
-    font-weight: 900; /* Extra Bold / Black に変更 */
-    font-size: 1.4rem; /* 少し大きく調整 */
+    font-weight: bold;
+    font-size: 2rem; /* タブの文字サイズを2remに大きく */
 }
 
 .sub-navigation a:hover {
@@ -555,14 +598,13 @@ footer p {
 /* -----------------------------
    9. カレンダー & タブ
 ----------------------------- */
-/* カレンダー全体 */
+/* カレンダー全体 (div要素) */
 #calendar {
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px; /* カレンダーの最大幅を1000pxに広げる */
     margin: 20px auto;
-    border-collapse: collapse;
-    font-size: 16px; /* この基準値は変更せず、em単位で調整します */
-    background-color: #e0f0e0; /* パステルグリーン系 */
+    font-size: 1rem; /* htmlのベースフォントサイズ(20px)に連動 */
+    background-color: #b6e2bc; /* パステルグリーン系 */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 12px;
     overflow: hidden; /* 角丸を適用するため */
@@ -570,195 +612,184 @@ footer p {
     box-sizing: border-box;
 }
 
+/* カレンダーテーブル本体 (table要素) */
+#calendar-table { /* JavaScriptで生成されるテーブルのID */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    table-layout: fixed; /* 列幅を固定 */
+    border-collapse: collapse; /* セル間の線を結合 */
+}
+
+/* テーブル行 */
+#calendar-table tr {
+    /* display: table-row; はブラウザのデフォルトに任せる */
+}
+
 /* 曜日セル（見出し） */
-#calendar th {
-    background-color: #fcefdc;
-    font-weight: 900; /* Extra Bold / Black に変更 */
-    font-size: 1.3em; /* 既に調整済み、このまま維持 */
-    color: #000; /* 黒に変更 */
+#calendar-table th { /* table-tableのthに適用 */
+    background-color: #fcefdc; /* 全てのthのデフォルト背景色。後続のルールで上書きされます */
+    font-weight: bold;
+    font-size: 1.2rem; /* フォントサイズ */
+    color: #444; /* 全てのthのデフォルト文字色 */
     padding: 12px 8px;
     border: 1px solid #e0d7c6;
     box-sizing: border-box;
+    width: calc(100% / 7); /* ここで曜日ヘッダーに均等幅を設定 */
+}
+
+/* 日曜日の曜日ヘッダーの背景色 */
+#calendar-table th:nth-child(1) {
+    background-color: #ffdcdc; /* 薄い赤色（日曜日用の背景） */
+}
+
+/* 月曜日から金曜日までの曜日ヘッダーの背景色 */
+#calendar-table th:nth-child(2), /* 月曜日 */
+#calendar-table th:nth-child(3), /* 火曜日 */
+#calendar-table th:nth-child(4), /* 水曜日 */
+#calendar-table th:nth-child(5), /* 木曜日 */
+#calendar-table th:nth-child(6)  /* 金曜日 */
+{
+    background-color: #f1f7f4; /* 薄い緑灰色（平日用の背景） */
+}
+
+/* 土曜日の曜日ヘッダーの背景色 */
+#calendar-table th:nth-child(7) {
+    background-color: #59B1D5; /* 濃い水色（土曜日用の背景） */
+}
+
+/* === 曜日ごとの色分け (テキスト色) === */
+/* （既存のテキスト色設定はそのまま残します） */
+#calendar-table th:nth-child(1),  /* 日曜日のヘッダー */
+#calendar-table td.sunday-text .day-number, /* JSで適用されるクラス */
+#calendar-table td.holiday .day-number { /* 祝日の文字色も赤に設定 */
+    color: #d10000; /* 日曜日と祝日の文字色 */
+}
+
+#calendar-table th:nth-child(7),  /* 土曜日のヘッダー */
+#calendar-table td.saturday-text .day-number { /* JSで適用されるクラス */
+    color: #1e40af; /* 土曜日の文字色 */
 }
 
 /* 日付セル */
-#calendar td {
+#calendar-table td { /* table-tableのtdに適用 */
     background-color: #ffffff;
-    color: #000; /* 黒に変更 */
-    padding: 12px 8px;
+    color: #333;
+    padding: 12px 8px; /* パディングを増やしてコンテンツスペースを確保 */
     border: 1px solid #ddd;
-    text-align: center;
-    vertical-align: middle;
-    width: 14.2%; /* 7列で均等幅 */
-    height: 60px;
+    text-align: center; /* セル内のテキストを中央揃え */
+    vertical-align: top; /* コンテンツが上端から表示されるように変更 */
+    min-height: 80px; /* 最小高さを設定してコンテンツが増えても崩れないようにします */
     transition: background-color 0.3s ease;
-    position: relative; /* イベントテキスト配置のために追加 */
+    position: relative; /* 必要であれば他の要素のために残す */
     box-sizing: border-box;
-    font-size: 1.1em; /* 既に調整済み、このまま維持 */
-    font-weight: 900; /* 太字に設定 */
+    /* display: table-cell; はブラウザのデフォルトに任せる */
+    font-size: 1rem; /* フォントサイズ */
+    width: calc(100% / 7); /* ここで日付セルに均等幅を設定 */
+}
+
+/* 日付番号のスタイル */
+.day-number {
+    font-size: 1em; /* 基本の日付サイズ */
+    font-weight: normal;
+    display: inline-block; /* インラインブロック要素に変更 */
+    line-height: 1.2; /* 行の高さを調整 */
+    width: auto; /* 幅を自動調整に戻す */
+    height: auto; /* 高さを自動調整に戻す */
+    box-sizing: border-box; /* パディングを幅に含める */
+    position: relative; /* 親セル内で位置を調整するため */
+    z-index: 1; /* イベントテキストより前面に表示 */
 }
 
 /* カレンダー内のイベントテキスト */
 .event-text {
     display: block; /* 改行して日付の下に表示 */
-    font-size: 0.9em; /* 既に調整済み、このまま維持 */
+    font-size: 0.8rem; /* フォントサイズ */
     margin-top: 2px;
     line-height: 1.2;
-    color: #000; /* 黒に変更 */
-    font-weight: 900; /* Extra Bold / Black に変更 */
+    color: #555; /* イベントテキストの色 */
+    word-break: break-word; /* 長いテキストがはみ出さないように改行 */
+    position: relative; /* 日付の下に配置するため */
+    z-index: 0;
+    text-align: center; /* 中央揃えを明示 */
+}
+.training-text { /* 稽古日テキストのスタイル */
+    display: block; /* 日付の下に改行して表示 */
+    font-size: 0.8rem; /* フォントサイズ */
+    color: #4CAF50; /* 稽古日らしい緑色 */
+    margin-top: 2px;
+    line-height: 1.2;
+    text-align: center; /* 中央揃えを明示 */
 }
 
+.closed-text { /* クローズ日のテキストのスタイル */
+    display: block; /* 日付の下に改行して表示 */
+    font-size: 0.8rem; /* フォントサイズ */
+    color: #D32F2F; /* 赤色で強調 */
+    margin-top: 2px;
+    line-height: 1.2;
+    text-align: center; /* 中央揃えを明示 */
+}
+
+
 /* === 今日の日付 === */
-#calendar td.today {
+#calendar-table td.today .day-number { /* 日付番号にのみ today スタイルを適用 */
     background-color: #dfffe0;
     font-weight: bold;
     color: #2d6a2d;
     box-shadow: inset 0 0 5px rgba(0, 128, 0, 0.2);
-    border-radius: 50%; /* todayクラスで丸くなる */
+    border-radius: 50%; /* 日付番号のみを丸くする */
+    padding: 0.2em 0.5em; /* パディングを追加して丸く見せる */
+    min-width: 1.5em; /* 幅を確保して正円に近づける */
+    text-align: center; /* テキストを中央揃え */
+    display: inline-block; /* 丸みを正しく表示するため */
 }
 
-/* === 曜日ごとの色分け === */
-#calendar th:nth-child(1),  /* 日曜 */
-#calendar td:nth-child(1) {
-    color: #d10000;
-    background-color: #fff5f5;
+/* === 曜日ごとの色分け (テキスト色) === */
+#calendar-table th:nth-child(1),  /* 日曜日のヘッダー */
+#calendar-table td.sunday-text .day-number, /* JSで適用されるクラス */
+#calendar-table td.holiday .day-number { /* 祝日の文字色も赤に設定 */
+    color: #d10000; /* 日曜日と祝日の文字色 */
 }
 
-#calendar th:nth-child(7),  /* 土曜 */
-#calendar td:nth-child(7) {
-    color: #1e40af;
-    background-color: #f5f8ff;
-}
-/* 稽古日（水・土） */
-#calendar td.training {
-    background-color: #e0f2f7; /* 薄い水色など */
-    color: #030114dc; /* 深い緑系の文字色 */
-    font-weight: bold;
+#calendar-table th:nth-child(7),  /* 土曜日のヘッダー */
+#calendar-table td.saturday-text .day-number { /* JSで適用されるクラス */
+    color: #1e40af; /* 土曜日の文字色 */
 }
 
-/* 平日（月〜金） */
-#calendar th:nth-child(n+2):nth-child(-n+6),
-#calendar td:nth-child(n+2):nth-child(-n+6) {
-    background-color: #fffdf5;
+/* === 背景色のクラス === */
+#calendar-table td.holiday-or-sunday-background {
+    background-color: #fff5f5; /* 日曜日と祝日の背景色 (薄い赤) */
 }
 
-/* カレンダーテーブルの最小幅 */
-table {
-    min-width: 600px;
+#calendar-table td.saturday-background { /* 土曜日の日付部分の背景色 */
+    background-color: #e0f2f7; /* 土曜日の背景色 (薄い水色) */
 }
 
-/* 稽古日テキストのスタイル */
-.training-text {
-    display: block; /* 日付の下に改行して表示 */
-    font-size: 0.7em; /* 小さめの文字サイズ */
-    color: #4CAF50; /* 稽古日らしい緑色 */
-    margin-top: 2px;
-}
-
-/* クローズ日のテキストのスタイル */
-.closed-text {
-    display: block; /* 日付の下に改行して表示 */
-    font-size: 0.7em;
-    color: #D32F2F; /* 赤色で強調 */
-    margin-top: 2px;
-}
-
-/* クローズ日のセルのスタイル（例：背景色を変えるなど） */
-#calendar td.closed-day {
+/* 稽古日ではないが休みの日のスタイル (例: 平日のイベント休み) */
+#calendar-table td.closed-non-training-day {
     background-color: #ffe0e0; /* 薄い赤系の背景 */
-    border: 2px solid #FFCDD2; /* 境界線も調整 */
+    border: 2px solid #FFCDD2; /* 境界線は維持 */
 }
 
-/* 祝日のセルのスタイル */
-#calendar td.holiday {
-    background-color: #fcefdc; /* カレンダーのthと同じ色にするか、別の色にするか調整 */
-    color: #d10000; /* 日曜と同じ赤 */
-    font-weight: bold;
+/* 稽古日だが休みの日のスタイル (土曜日で稽古休み - 薄い水色の背景) */
+#calendar-table td.closed-training-day {
+    background-color: #e0f2f7; /* 薄い水色 (通常の稽古日と同じ色) */
+    border: 2px solid #FFCDD2; /* 薄いピンク色のボーダー */
 }
 
 
 /* -----------------------------
-   10. レスポンシブ対応
+   新しく追加されたIDのスタイル
 ----------------------------- */
-@media screen and (max-width: 600px) {
-    /* main要素の調整: スマホでは左右のマージンを少し持たせる */
-    main {
-        margin: 1rem 10px; /* 上下1rem, 左右10pxの余白 */
-    }
-
-    .info-container {
-        flex-direction: column;
-    }
-
-    .info-text, .info-map {
-        min-width: 80%;
-        flex: 1 1 80%;
-    }
-
-    /* カレンダーのレスポンシブ対応 */
-    #calendar {
-        font-size: 14px; /* フォントサイズを小さくする */
-    }
-    #calendar th, #calendar td {
-        padding: 8px 4px; /* パディングを小さくする */
-        height: 40px; /* セルの高さを小さくする */
-    }
-    .event-text {
-        font-size: 0.6em; /* イベントテキストも小さく */
-    }
-    .title-text h1 {
-        font-size: 2rem; /* ヘッダーのH1も調整 */
-    }
-    /* char-blockのフォントサイズを小さく調整 */
-    #main-title .char-block {
-        font-size: 2.5rem; /* スマートフォンで文字がはみ出さないように調整 */
-        padding: 0.1em 0.2em; /* パディングも小さく */
-        margin: 0.05em; /* マージンも小さく */
-    }
-    #sub-title .char-block {
-        font-size: 1.1rem; /* サブタイトルも調整 */
-        padding: 0.1em 0.2em;
-        margin: 0.05em;
-    }
-    /* 追加: 各セクションのpタグのスマートフォンでのフォントサイズを微調整 */
-    .introduction p, .recruit p, .gallery-section p, .youtube-gallery p, footer p {
-        font-size: 1rem; /* 0.9remから1remに大きく */
-    }
-    .info-text p, .contact p {
-        font-size: 1.1rem; /* 1remから1.1remに大きく */
-    }
-    /* 追加: 各セクションのh2タグのスマートフォンでのフォントサイズを微調整 */
-    .notice h2, .introduction h2, .info h2, .recruit h2, .contact h2, .gallery-section h2, .youtube-gallery h2 {
-        font-size: 1.4rem; /* 1.3remから1.4remに大きく */
-    }
-    /* 追加: .gallery-section h1のスマートフォンでのフォントサイズを微調整 */
-    .gallery-section h1 {
-        font-size: 1.5rem; /* スマートフォンでは少し小さめに保つ */
-    }
-    .sub-navigation a {
-        font-size: 1.2rem; /* 1.1remから1.2remに大きく */
-    }
-    select {
-        font-size: 1em; /* 0.9emから1emに大きく */
-    }
-}
-
-/* さらに小さな画面（例: 375px以下）に対応する場合 */
-@media screen and (max-width: 700px) { /* 600pxと重複するが、より細かく調整したい場合 */
-    #calendar {
-        font-size: 12px;
-    }
-    #calendar th, #calendar td {
-        padding: 5px 2px;
-        height: 35px;
-    }
+#training-schedule-section {
+    background-color: rgba(240, 248, 255, 0.9); /* 薄い青系の背景色（例） */
+    /* ここに任意の背景色を指定してください */
 }
 
 /* -----------------------------
-   11. YouTubeギャラリーのスタイル
+   11. ビデオセクションのスタイル (新規追加)
 ----------------------------- */
-.youtube-gallery {
-    background-color: #fefefecc;
+.video-section {
+    background-color: #fefefecc; /* セクションの背景色 */
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 15px;
@@ -766,28 +797,83 @@ table {
     box-sizing: border-box;
 }
 
-.youtube-gallery h2 { /* h2に適用されるようにしました */
-    color: #5d7f4a;
-    font-size: 1.7rem; /* 少し大きく */
+.video-section h2 {
+    color: #5d7f4a; /* 見出しの色 */
+    font-size: 1.8rem; /* フォントサイズ */
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px #c5e1a5;
     font-weight: 900;
 }
 
+.video-section p {
+    font-size: 1.125rem; /* フォントサイズ */
+    color: #444;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem; /* 動画との間に少しスペースを空ける */
+}
+
+.video-player-container {
+    position: relative;
+    width: 100%;
+    /* 16:9 のアスペクト比を維持するためのパディング (高さを幅の56.25%に設定) */
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px; /* ビデオプレーヤーの角丸 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    box-sizing: border-box;
+}
+
+.video-player-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* コンテナに合わせてビデオをトリミング */
+    border: none;
+}
+
+
+/* -----------------------------
+   12. YouTubeギャラリーのスタイル (既存のものを13番に移動)
+----------------------------- */
+/* YouTubeギャラリーのスタイルは、セクション番号を13に変更しました */
+
+
+/* -----------------------------
+   13. YouTubeギャラリーのスタイル (元の11番)
+----------------------------- */
+.youtube-gallery {
+    background-color: #fefefecc;
+    padding: 1.5rem; /* セクション全体のパディング */
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
+    box-sizing: border-box;
+}
+
+.youtube-gallery h2 {
+    color: #5d7f4a;
+    font-size: 1.8rem; /* フォントサイズ */
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px #c5e1a5;
+}
+
 .youtube-gallery p {
-    font-size: 1.1rem; /* 少し大きく */
-    color: #000; /* 黒に変更 */
+    font-size: 1.125rem; /* フォントサイズ */
+    color: #444;
     text-align: center;
     margin-top: 0.5rem;
     margin-bottom: 1rem; /* 動画との間に少しスペースを空ける */
-    font-weight: 900; /* Extra Bold / Black に変更 */
 }
 
 .youtube-video-container {
     position: relative;
-    width: 100%;
+    width: 100%; /* 親要素の幅いっぱいに広がる */
     padding-bottom: 56.25%; /* 16:9 のアスペクト比 (高さを幅の56.25%に設定) */
-    height: 0;
+    height: 0; /* 高さを0にしてpadding-bottomで高さを制御 */
     margin-bottom: 1.5rem; /* 各動画コンテナの下にスペース */
     border-radius: 12px; /* 角を丸くする */
     overflow: hidden; /* 角丸を適用するために必要 */
@@ -802,4 +888,191 @@ table {
     width: 100%;
     height: 100%;
     border: none; /* iframeのデフォルトボーダーを削除 */
+}
+
+/* -----------------------------
+   14. FAQセクションのスタイル (元の12番)
+----------------------------- */
+.faq-section {
+    background-color: #e6f7ff; /* 淡い水色の背景 */
+    border-left: 6px solid #99daff; /* 青系の左ボーダー */
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(100, 100, 100, 0.15);
+}
+
+.faq-section h1 {
+    color: #007bff; /* 鮮やかな青 */
+    font-size: 2rem; /* フォントサイズ */
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px #ccedff;
+    font-weight: 900;
+}
+
+.faq-item {
+    background-color: #ffffff;
+    border: 1px solid #cceeff;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    text-align: left; /* Q&Aのテキストは左寄せ */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.faq-item .question {
+    color: #336699; /* 質問は濃い青 */
+    font-size: 1.3rem; /* フォントサイズ */
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 800; /* 少し太く */
+    display: flex;
+    align-items: flex-start;
+}
+
+.faq-item .question::before {
+    content: "Q.";
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 900;
+    color: #336699; /* 質問番号の色 */
+    font-size: 1.5rem; /* フォントサイズ */
+    margin-right: 0.5rem;
+    padding: 0 0.2em;
+    border-radius: 5px;
+    background-color: #ddf0ff;
+}
+
+.faq-item .answer {
+    color: #555555; /* 回答は少し薄いグレー */
+    font-size: 1.125rem; /* フォントサイズ */
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500; /* 標準より少し太く */
+    display: flex;
+    align-items: flex-start;
+    padding-left: 0.5rem; /* Q.とA.のインデントを揃える */
+}
+
+.faq-item .answer::before {
+    content: "A.";
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 900;
+    color: #555555; /* 回答番号の色 */
+    font-size: 1.5rem; /* フォントサイズ */
+    margin-right: 0.5rem;
+    padding: 0 0.2em;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+}
+
+/* レスポンシブ対応 - FAQセクション */
+@media screen and (max-width: 600px) {
+    .faq-section h1 {
+        font-size: 1.8rem; /* フォントサイズ */
+    }
+    .faq-item .question {
+        font-size: 1.2rem; /* フォントサイズ */
+    }
+    .faq-item .question::before {
+        font-size: 1.3rem; /* フォントサイズ */
+    }
+    .faq-item .answer {
+        font-size: 1.0rem; /* フォントサイズ */
+    }
+    .faq-item .answer::before {
+        font-size: 1.3rem; /* フォントサイズ */
+    }
+}
+
+
+/* -----------------------------
+   10. レスポンシブ対応
+----------------------------- */
+@media screen and (max-width: 600px) {
+    /* main要素の調整: スマホでは左右のマージンを少し持たせる */
+    main {
+        margin: 1rem 0.5rem; /* 上下1rem, 左右0.5rem (約8px)の余白 */
+        padding: 1rem; /* スマホではパディングを少し減らす */
+    }
+
+    /* sectionのパディングをスマートフォン用に調整 */
+    section {
+        padding: 1rem; /* 1.5remから1remに削減 */
+        margin-top: 1rem; /* スマホでのセクションの上マージン */
+    }
+    /* main内の最初のセクションには上マージンを適用しない（スマホ用） */
+    main section:first-child {
+        margin-top: 0;
+    }
+
+    .info-container {
+        flex-direction: column;
+    }
+
+    .info-text, .info-map {
+        min-width: 80%;
+        flex: 1 1 80%;
+    }
+
+    /* カレンダーのレスポンシブ対応 */
+    #calendar {
+        font-size: 0.8rem; /* フォントサイズ (20px * 0.8 = 16px) */
+    }
+    #calendar-table th, #calendar-table td {
+        padding: 8px 4px; /* パディングを小さくする */
+        /* min-height は削除し、コンテンツで高さが自動調整されるようにします */
+    }
+    .day-number {
+        font-size: 0.9em; /* 日付番号を小さく */
+        width: 1.8em; /* スマホでの丸のサイズ調整 */
+        height: 1.8em; /* スマホでの丸のサイズ調整 */
+    }
+    .event-text, .training-text, .closed-text {
+        font-size: 0.6rem; /* イベントテキストも小さく (20px * 0.6 = 12px) */
+    }
+    h1 {
+        font-size: 2rem; /* ヘッダーのH1も調整 (20px * 2 = 40px) */
+    }
+    /* char-blockのフォントサイズを小さく調整 */
+    #main-title .char-block {
+        font-size: 2.8rem; /* スマートフォンで文字がはみ出さないように調整 (20px * 2.8 = 56px) */
+        padding: 0.1em 0.2em; /* パディングも小さく */
+        margin: 0.05em; /* マージンも小さく */
+    }
+    #sub-title .char-block {
+        font-size: 1.2rem; /* サブタイトルも調整 (20px * 1.2 = 24px) */
+        padding: 0.1em 0.2em;
+        margin: 0.05em;
+    }
+    /* 各セクションのpタグのスマートフォンでのフォントサイズを微調整 */
+    .introduction p, .recruit p, .gallery-section p, .youtube-gallery p, footer p, .video-section p {
+        font-size: 1rem; /* 20px * 1 = 20px */
+    }
+    .info-text p, .contact-info-block p, .important-notes-block p {
+        font-size: 1.1rem; /* 20px * 1.1 = 22px */
+    }
+    /* 各セクションのh2タグのスマートフォンでのフォントサイズを微調整 */
+    .notice h2, .introduction h2, .info h2, .recruit h2, .contact-info-block h2, .important-notes-block h3, .gallery-section h2, .youtube-gallery h2, .video-section h2 {
+        font-size: 1.6rem; /* 20px * 1.6 = 32px */
+    }
+    /* .gallery-section h1のスマートフォンでのフォントサイズを微調整 */
+    .gallery-section h1 {
+        font-size: 1.8rem; /* スマートフォンでは少し小さめに保つ (20px * 1.8 = 36px) */
+    }
+    .sub-navigation a {
+        font-size: 1.5rem; /* タブの文字サイズ (20px * 1.5 = 30px) */
+    }
+    select {
+        font-size: 1.1rem; /* 20px * 1.1 = 22px */
+    }
+}
+
+/* さらに小さな画面（例: 375px以下）に対応する場合 */
+@media screen and (max-width: 700px) { /* 600pxと重複するが、より細かく調整したい場合 */
+    #calendar {
+        font-size: 0.7rem; /* さらに小さく (20px * 0.7 = 14px) */
+    }
+    #calendar-table th, #calendar-table td {
+        padding: 5px 2px;
+        height: 35px;
+    }
 }

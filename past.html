@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <!-- Google Fonts: Kiwi Maru と Zen Maru Gothic の両方を読み込みます -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,34 +31,49 @@
 
     <main>
         <section class="gallery-section"> <!-- style.cssで定義されたギャラリースタイルを適用 -->
-            <h1>写真やイベントの様子などを紹介します。</h1>
+            <h1>⛩️イベントの様子などを紹介します。⛩️</h1>
             <!-- 画像に .image クラスも適用して style.css の共通画像スタイルを利用可能に -->
-            <div class="image">
-                <img src="大分審査.JPG" alt="審査会の様子1">
-            </div>
-            <div class="image">
-                <img src="大分審査２段.png" alt="審査会の様子2">
-            </div>
             <p>審査会の様子です。</p>
             <div class="image">
-                <img src="演武会１.png" alt="演武会の様子">
+                <img src="大分審査２段.png" alt="審査会の様子1">
             </div>
+            <div class="image">
+                <img src="大分審査.JPG" alt="審査会の様子2">
+            </div>
+
+            <!-- ここから動画セクションを個別に配置 -->
+            <section class="video-section">
+                <h2>2024年福岡での演武</h2>
+                <p>2024年の福岡での演武の様子です。</p>
+                <div class="video-player-container">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="2024fukuoka.mp4" type="video/mp4">
+                        <!-- WebM形式も用意するとより良い互換性が得られます。もし具体的なWebMファイルがあれば、そちらのファイル名に置き換えてください -->
+                        <source src="uploaded:your_video_file.webm" type="video/webm">
+                        お使いのブラウザはビデオタグをサポートしていません。
+                    </video>
+                </div>
+            </section>
+            <!-- ここまで動画セクション -->
+
+            <p>2024年 演武会ご祝賀会</p>
             <div class="image">
                 <img src="祝賀会.jpg" alt="祝賀会の様子">
             </div>
-            <p>2024年 演武会ご祝賀会</p>
+        </section>
 
         <!-- サブナビゲーションの修正: ul, li で囲みます -->
         <section class="sub-navigation">
             <ul>
                 <li><a href="index.html" class="button-stump">トップページに戻る</a></li>
                 <li><a href="youtube.html" class="button-stump">動画を見る</a></li>
+                <li><a href="faq.html" class="button-stump">質問コーナー</a></li>
             </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 宇佐合気道会</p>
+        <p>&copy;非公式 2025 宇佐合気道会</p>
     </footer>
 </body>
 </html>
