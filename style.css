@@ -112,13 +112,13 @@ ul {
 }
 /*sihanaionをゆらすアニメーション*/
 .swing-icon {
-width: 60px;         /* サイズはお好みで調整 */
-height: auto;
-border-radius: 50%;
-object-fit: cover;  /* 画像の比率を維持しつつ、はみ出た部分を切り取る */
-vertical-align: middle;
-animation: swing 2s infinite ease-in-out;
-box-shadow: 0 0 5px rgba(0,0,0,0.1);  /* やわらかい影を追加（任意） */
+    width: 60px;        /* サイズはお好みで調整 */
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;  /* 画像の比率を維持しつつ、はみ出た部分を切り取る */
+    vertical-align: middle;
+    animation: swing 2s infinite ease-in-out;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);  /* やわらかい影を追加（任意） */
 }
 
 
@@ -170,12 +170,12 @@ main section:first-child {
     background: #dcc4ab;
     color: white; /* ボタンの文字色は白 */
     font-weight: bold;
-    padding: 0.5rem 0.8rem; /* パディングをさらに小さくする */
+    padding: 0.4rem 0.7rem; /* パディングを一回り小さく変更 */
     border-radius: 50px;
     border: 4px solid #6b4c2b;
     box-shadow: inset -2px -4px 0 #8d6741, 3px 5px 0 #6b4c2b;
     text-decoration: none;
-    font-size: 1.0rem; /* ボタンのフォントサイズをさらに小さくする */
+    font-size: 0.9rem; /* ボタンのフォントサイズを一回り小さく変更 */
     color: #2f6b1b !important; /* 強制的に緑系の文字色を適用 */
     text-decoration: none !important; /* 強制的に下線を削除 */
 }
@@ -1059,7 +1059,7 @@ footer p {
         font-size: 1.8rem; /* スマートフォンでは少し小さめに保つ (20px * 1.8 = 36px) */
     }
     .sub-navigation a {
-        font-size: 1.5rem; /* タブの文字サイズ (20px * 1.5 = 30px) */
+        font-size: 1.3rem; /* タブの文字サイズを調整 */
     }
     select {
         font-size: 1.1rem; /* 20px * 1.1 = 22px */
