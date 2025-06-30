@@ -30,7 +30,7 @@
     
     <main>
         <section class="introduction">
-            <h1>⛩️ごあいさつ⛩️</h1>
+            <h1>⛩️ごあいさつ</h1>
             <p>宇佐合気道会は合気道祥平塾の傘下道場です。</p>
             <p>宇佐合気道会は、１９９２年（平成４年）宇佐警察署に勤務されいていた合気道経験者の豊田氏が発起人となり警察署の道場をお借りして数人で稽古を始めました。</p>
             <p>翌年には宇佐合気道会として正式に発足し、稽古場所も現在地になりました。</p>
@@ -39,7 +39,8 @@
 
         <section class="recruit">
             <h1>
-                <span class="tree-icon">🌳</span>会員募集<span class="tree-icon">🌳</span></h1>
+                <span class="tree-icon">🌳</span>会員募集
+            </h1>
             <p>初心者大歓迎　家族・親子・兄弟姉妹・祖父母孫での参加もお待ちしています。</p>
             <p>年齢・性別関係なく、楽しく緩やかに合気道を行っています。</p>
             <p>宇佐合気道会では、新しい仲間をいつでも歓迎しています。</p>
@@ -55,12 +56,11 @@
         </section>
 
         <section class="image">
-            <img src="審査風景.JPG" />  
-        
+            <img src="審査風景.JPG" alt="稽古の様子" /> 
         </section>
 
         <section class="info">
-            <h2>🌿稽古時間・稽古場所🌿</h2>
+            <h2>🌿時間・場所</h2>
             <div class="info-container">
                 <div class="info-text">
                     <p>練習日：毎週水・土曜日 19時〜20時</p>
@@ -83,7 +83,7 @@
         </section>
 
         <section id="monthly-notice" class="notice">
-            <h2>🌸お知らせ🌸</h2>
+            <h2>🌸お知らせ</h2>
             <!-- 動的な月次のお知らせはここに表示されます -->
             <div id="monthly-dynamic-notice"></div>
             <!-- 固定の注意事項ブロックはここにあります -->
@@ -94,36 +94,30 @@
                 <p></p>
             </div>
         </section>
+
         <section id="training-schedule-section">
-  <h1>
-    <img src="sihanaikon.png" alt="合気道アイコン" class="swing-icon" />
-    稽古日程<img src="sihanaikon.png" alt="合気道アイコン" class="swing-icon" />
-  </h1>
-
-  <div class="controls">
-    <label for="year-select">年:</label>
-    <select id="year-select"></select>
-
-    <label for="month-select">月:</label>
-    <select id="month-select">
-      <option value="0">1月</option>
-      <option value="1">2月</option>
-      <option value="2">3月</option>
-      <option value="3">4月</option>
-      <option value="4">5月</option>
-      <option value="5">6月</option>
-      <option value="6">7月</option>
-      <option value="7">8月</option>
-      <option value="8">9月</option>
-      <option value="9">10月</option>
-      <option value="10">11月</option>
-      <option value="11">12月</option>
-    </select>
-  </div>
-</section>
-
-
-        
+            <h1>
+                <img src="sihanaikon.png" alt="合気道アイコン" class="swing-icon" />
+                稽古日程
+            </h1>
+            <div class="controls">
+                <label for="year-select">年:</label>
+                <select id="year-select"></select>
+                <label for="month-select">月:</label>
+                <select id="month-select">
+                    <option value="0">1月</option>
+                    <option value="1">2月</option>
+                    <option value="2">3月</option>
+                    <option value="3">4月</option>
+                    <option value="4">5月</option>
+                    <option value="5">6月</option>
+                    <option value="6">7月</option>
+                    <option value="7">8月</option>
+                    <option value="8">9月</option>
+                    <option value="9">10月</option>
+                    <option value="10">11月</option>
+                    <option value="11">12月</option>
+                </select>
             </div>
             <div id="calendar-container">
                 <div id="calendar"></div>
@@ -147,7 +141,7 @@
         // DOMContentLoadedイベントリスナーで囲むことで、HTMLの読み込み完了後にスクリプトを実行します
         document.addEventListener('DOMContentLoaded', (event) => {
             const yearSelect = document.getElementById("year-select");
-            const monthSelect = document.getElementById("month-select"); // monthからmonth-selectに修正
+            const monthSelect = document.getElementById("month-select");
             const calendarDiv = document.getElementById("calendar");
             const monthlyDynamicNoticeDiv = document.getElementById("monthly-dynamic-notice"); // JavaScriptで更新する対象要素
 
@@ -199,14 +193,19 @@
             eventDates["2025-02-11"] = { type: "holiday", text: "建国記念の日" };
             eventDates["2025-03-20"] = { type: "holiday", text: "春分の日" };
             eventDates["2025-04-29"] = { type: "holiday", text: "昭和の日" };
+            // 5月3日は演武会と稽古休みを両方表示 (憲法記念日を追加)
             eventDates["2025-05-03"] = { type: ["event", "closed", "holiday"], text: ["憲法記念日", "演武会", "稽古休み"] }; 
             eventDates["2025-05-04"] = { type: "holiday", text: "みどりの日" }; 
             eventDates["2025-05-05"] = { type: "holiday", text: "こどもの日" }; 
             eventDates["2025-05-06"] = { type: "holiday", text: "振替休日" };
             eventDates["2025-06-14"] = { type: "closed", text: "稽古休み" }; 
             eventDates["2025-06-29"] = { type: "event", text: "昇級昇段審査会" }; 
+            eventDates["2025-07-05"] = { type: "closed", text: "稽古休み" };
             eventDates["2025-07-21"] = { type: "holiday", text: "海の日" };
             eventDates["2025-08-11"] = { type: "holiday", text: "山の日" };
+            eventDates["2025-08-13"] = { type: "closed", text: "稽古休み" };
+            eventDates["2025-08-14"] = { type: "closed", text: "稽古休み" };
+            eventDates["2025-08-15"] = { type: "closed", text: "稽古休み" };
             eventDates["2025-09-15"] = { type: "holiday", text: "敬老の日" };
             eventDates["2025-09-23"] = { type: "holiday", "text": "秋分の日" };
             eventDates["2025-10-13"] = { type: "holiday", text: "スポーツの日" };
@@ -216,7 +215,7 @@
             eventDates["2025-12-27"] = { type: "closed", text: "稽古休み" };
             eventDates["2025-12-31"] = { type: "closed", text: "稽古休み" };
 
-           
+            
             
             // --- 2026年からの国民の祝日 (自動生成) ---
             eventDates["2026-01-03"] = { type: "closed", text: "稽古休み" };
@@ -395,7 +394,7 @@
                     // 祝日の文字色はCSSの.holidayクラスで設定されます。
 
                     // --- Background Color Classes ---
-                    // 優先順位: 祝日/日曜日背景 > 土曜日背景 > デフォルト (白)
+                    // 優先順位: 祝日/日曜日背景 > 土曜日背景 > 休みの日背景 > デフォルト (白)
                     if (isHoliday || dayOfWeek === 0) { // 祝日または日曜日の場合
                         classes.push("holiday-or-sunday-background"); // 薄い赤色の背景
                         if (isHoliday) {
@@ -403,9 +402,10 @@
                         }
                     } else if (dayOfWeek === 6) { // 土曜日（祝日ではない場合）
                         classes.push("saturday-background"); // 薄い水色の背景
+                    } else if (isClosedDay) { // その他の休みの日（祝日/日曜日/土曜日ではない場合）
+                        classes.push("closed-non-training-day"); // 薄い赤色の背景
                     }
-                    // 平日の稽古休み（closed-non-training-day）のスタイルは削除されたため、
-                    // ここでは特別な背景色クラスを追加せず、デフォルトのセルスタイルになります。
+                    // 水曜日を含むその他の平日は、デフォルトで白い背景になります。
 
                     // --- Additional Texts (例: 稽古休み, 稽古日, 祝日名) ---
                     const addedTextsSet = new Set(); 
@@ -451,6 +451,10 @@
 
                 // 月の最終日以降の空のセルを挿入
                 const lastDayOfWeek = new Date(year, month, lastDate).getDay();
+                // 最後の週が土曜日で終わらない場合、残りの曜日分だけ空のセルを追加
+                // 日曜日始まりのカレンダーなので、0 (日) から 6 (土) まで
+                // lastDayOfWeek が 0 (日) の場合、6個の空セルが必要
+                // lastDayOfWeek が 6 (土) の場合、0個の空セルが必要
                 const remainingCells = 6 - lastDayOfWeek;
                 for (let i = 0; i < remainingCells; i++) {
                     html += `<td></td>`;
@@ -463,6 +467,8 @@
             // 月ごとのお知らせを更新する関数
             function updateMonthlyNoticeSection(year, month) {
                 let dynamicNoticeContent = ''; // 月ごとの動的なお知らせ用
+                // 祝日名のリストを定義
+                const holidayNames = ["元日", "成人の日", "建国記念の日", "天皇誕生日", "春分の日", "昭和の日", "憲法記念日", "みどりの日", "こどもの日", "海の日", "山の日", "敬老の日", "秋分の日", "スポーツの日", "文化の日", "勤労感謝の日", "振替休日", "国民の休日"];
 
                 const noticesForCurrentMonth = Object.keys(eventDates)
                     .filter(dateStr => {
@@ -477,35 +483,42 @@
                         const dateObj = new Date(dateStr);
                         const displayDate = `${dateObj.getMonth() + 1}月${dateObj.getDate()}日（${days[dateObj.getDay()]}）`;
                         
-                        let textsToDisplay = Array.isArray(eventInfo.text) ? [...eventInfo.text] : [eventInfo.text];
-                        const tempTextsToDisplay = new Set(); // 重複チェック用
+                        let typesForDate = Array.isArray(eventInfo.type) ? eventInfo.type : [eventInfo.type];
+                        let textsForDate = Array.isArray(eventInfo.text) ? eventInfo.text : [eventInfo.text];
 
-                        // 祝日名とイベント名を先に処理
-                        textsToDisplay.forEach(text => {
-                            // "稽古日"以外、かつまだ追加されていないテキストを追加
-                            if (text !== "稽古日" && !tempTextsToDisplay.has(text)) {
-                                dynamicNoticeContent += `<p><small>${displayDate}は${text}。</small></p>`;
-                                tempTextsToDisplay.add(text);
+                        const addedTextsToNotice = new Set(); // 重複および表示済み（またはスキップ済み）テキストを追跡
+
+                        // まず、祝日名を除外する
+                        textsForDate = textsForDate.filter(text => !holidayNames.includes(text));
+
+                        // 残ったテキスト（演武会、稽古休み、審査など）を処理
+                        textsForDate.forEach(text => {
+                            if (addedTextsToNotice.has(text) || text === "稽古日") { 
+                                return; // 既に通知に追加済み、または「稽古日」テキストはスキップ
                             }
+                            dynamicNoticeContent += `<p><small>${displayDate}は${text}。</small></p>`;
+                            addedTextsToNotice.add(text);
                         });
 
-                        // 稽古日を処理
+                        // 稽古日（水曜日または土曜日で、祝日でも稽古休みでも他のイベントでもない場合）
                         const dayOfWeek = dateObj.getDay();
-                        const isTrainingDay = (dayOfWeek === 3 || dayOfWeek === 6); // 水曜日または土曜日
-                        const isEventHolidayOrClosed = (eventInfo && (eventInfo.type === "holiday" || eventInfo.type === "closed" || (Array.isArray(eventInfo.type) && (eventInfo.type.includes("holiday") || eventInfo.type.includes("closed")))));
+                        const isTrainingDayCandidate = (dayOfWeek === 3 || dayOfWeek === 6); // 水曜日または土曜日
                         
-                        // 稽古日であり、かつ祝日や稽古休みなどのイベントがない場合のみ「稽古日」と表示
-                        // また、既に「稽古日」テキストが追加されていないことを確認
-                        if (isTrainingDay && !isEventHolidayOrClosed && !tempTextsToDisplay.has("稽古日")) {
+                        // 該当の日が「holiday」タイプを含まないことを確認
+                        const isNotHolidayType = !typesForDate.includes("holiday");
+                        
+                        // 既に「稽古休み」やその他のイベント（演武会、審査会など）が追加されていないことを確認
+                        const hasNoOtherSpecificNotice = addedTextsToNotice.size === 0;
+
+                        if (isTrainingDayCandidate && isNotHolidayType && hasNoOtherSpecificNotice) {
                             dynamicNoticeContent += `<p><small>${displayDate}は稽古日。</small></p>`;
-                            tempTextsToDisplay.add("稽古日");
+                            addedTextsToNotice.add("稽古日"); // 追加したことを記録
                         }
                     });
                 } else {
                     dynamicNoticeContent += '<p><small>今月のお知らせはありません。</small></p>';
                 }
 
-                // monthlyDynamicNoticeDiv が存在する場合のみ更新
                 if (monthlyDynamicNoticeDiv) {
                     monthlyDynamicNoticeDiv.innerHTML = dynamicNoticeContent;
                 }
