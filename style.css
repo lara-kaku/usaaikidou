@@ -766,11 +766,7 @@ footer p {
     background-color: #e0f2f7; /* 土曜日の背景色 (薄い水色) */
 }
 
-/* 稽古日ではないが休みの日のスタイル (例: 平日のイベント休み) */
-#calendar-table td.closed-non-training-day {
-    background-color: #ffe0e0; /* 薄い赤系の背景 */
-    border: 2px solid #FFCDD2; /* 境界線は維持 */
-}
+
 
 /* 稽古日だが休みの日のスタイル (土曜日で稽古休み - 薄い水色の背景) */
 #calendar-table td.closed-training-day {

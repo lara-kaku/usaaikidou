@@ -203,11 +203,9 @@
             eventDates["2025-07-05"] = { type: "closed", text: "稽古休み" };
             eventDates["2025-07-21"] = { type: "holiday", text: "海の日" };
             eventDates["2025-08-11"] = { type: "holiday", text: "山の日" };
-            eventDates["2025-08-13"] = { type: "closed", text: "稽古休み" };
-            eventDates["2025-08-14"] = { type: "closed", text: "稽古休み" };
-            eventDates["2025-08-15"] = { type: "closed", text: "稽古休み" };
+            eventDates["2025-08-13"] = { type: "closed", text: "稽古休み" };          
             eventDates["2025-09-15"] = { type: "holiday", text: "敬老の日" };
-            eventDates["2025-09-23"] = { type: "holiday", "text": "秋分の日" };
+            eventDates["2025-09-23"] = { type: "holiday", text: "秋分の日" };
             eventDates["2025-10-13"] = { type: "holiday", text: "スポーツの日" };
             eventDates["2025-11-03"] = { type: "holiday", text: "文化の日" };
             eventDates["2025-11-23"] = { type: "holiday", text: "勤労感謝の日" };
@@ -419,7 +417,7 @@
                             if (text === "稽古休み") {
                                 additionalTexts.push(`<span class="closed-text">${text}</span>`);
                                 addedTextsSet.add(text);
-                            } else if (["元日", "成人の日", "建国記念の日", "天皇誕生日", "春分の日", "昭和の日", "憲法記念日", "みどりの日", "こどもの日", "海の日", "山の日", "敬老の日", "秋分の日", "スポーツの日", "文化の日", "勤労感謝の日", "振替休日", "国民の休日", "お盆休み", "年末休み", "正月休み"].includes(text)) { // 長期休みも祝日名として追加
+                            } else if (["元日", "成人の日", "建国記念の日", "天皇誕生日", "春分の日", "昭和の日", "憲法記念日", "みどりの日", "こどもの日", "海の日", "山の日", "敬老の日", "秋分の日", "スポーツの日", "文化の日", "勤労感謝の日", "振替休日", "国民の休日", ].includes(text)) { // 長期休みも祝日名として追加
                                 additionalTexts.push(`<span class="event-text">${text}</span>`);
                                 addedTextsSet.add(text);
                             } else if (eventInfo.type === "event" || (Array.isArray(eventInfo.type) && eventInfo.type.includes("event"))) {
