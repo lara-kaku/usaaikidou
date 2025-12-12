@@ -10,12 +10,12 @@ body {
     overflow: hidden; /* スクロール防止 */
 }
 
-/* ゲームコンテナ (変更なし) */
+/* ゲームコンテナ (修正: max-heightの構文エラーを修正) */
 #game-container {
     width: 100%;
     max-width: 500px;
     height: calc(100vh - 10px); 
-    max-height: calc 700px; 
+    max-height: 700px; /* 構文を修正 */
     background-color: #fff;
     border: 5px solid #6b4c2b;
     border-radius: 10px;
@@ -23,6 +23,7 @@ body {
     position: relative;
     overflow: hidden; 
 }
+
 /* 状態表示バー (変更なし) */
 #status-bar {
     display: flex;
@@ -47,15 +48,21 @@ body {
     transition: background-color 0.2s;
 }
 
-/* ゲームエリア/プレイヤー (変更なし) */
+/* ゲームエリア/プレイヤー */
+/* ゲームエリアの高さ: 
+   = 全体の高さ(100%) 
+   - ステータスバーの高さ(約50px) 
+   - 戻るボタンの高さ(約70px)
+   - モバイル操作ボタンの高さ(約70px) ※モバイル時のみ */
 #game-area {
+    /* PC/デフォルト時: 100% - 50px (status-bar) - 70px (flow-button) */
     height: calc(100% - 50px - 70px); 
     position: relative;
     background: #f7f7f7;
 }
 #player {
     position: absolute;
-    bottom: 0px; 
+    bottom: 0px; /* PC/デフォルト時の下端 */
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
@@ -82,33 +89,28 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    /* ★修正: 高さを短くし、画面下部の「戻る」ボタンのスペース（約70px）を空ける */
-    height: calc(100% - 90px); 
+    /* 🔴 修正: 高さを '戻るボタン' の上端に合わせる */
+    height: calc(100% - 70px); /* 100% - 戻るボタンの高さ(約70px) */
     background: rgba(0, 0, 0, 0.85);
     color: white;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; は維持し、中央配置を保つ */
     justify-content: center; 
     align-items: center;
     text-align: center;
-    z-index: 95; /* 戻るボタン(100)よりも下に配置 */
+    z-index: 95;
     gap: 15px;
-    
-    /* 縦スクロールは、この短い領域内でコンテンツがはみ出した場合のみ有効に */
     overflow-y: auto; 
     overflow-x: hidden;
-    /* ★追加: 下のボタンが見えるよう、下端を固定 */
-    bottom: 70px; 
+    /* bottom: 70px; の代わりに height: calc(100% - 70px); を使用 */
 }
 
 #overlay h1 {
     font-size: 3em;
     margin-bottom: 10px;
     color: #FFD700;
-} /* ★修正: ここに閉じ波括弧を追加 */
+} 
 
-/* ★修正: ボタンスイッチとしてのスタイル */
 #overlay button {
     padding: 12px 25px;
     font-size: 1.6em;
@@ -121,7 +123,6 @@ body {
     box-shadow: 0 6px #FF9800; 
     transition: all 0.1s;
 }
-/* クリック時のスタイル（ボタンが沈む表現） */
 #overlay button:active {
     box-shadow: 0 1px #FF9800;
     transform: translateY(5px); 
@@ -134,12 +135,11 @@ body {
 }
 
 
-/* ルール説明ボックスのスタイル */
+/* ルール説明ボックスのスタイル (変更なし) */
 #rules-box {
     background-color: rgba(255, 255, 255, 0.95);
     color: #333;
     padding: 20px;
-    /* ★修正: 上下のマージンを小さくし、オーバーレイ内の領域を確保する */
     margin: 10px auto; 
     width: 90%;
     max-width: 400px;
@@ -165,34 +165,48 @@ body {
 }
 
 
-/* スマホ用操作ボタン (変更なし) */
+/* モバイル操作ボタン */
 #mobile-controls {
     display: none; 
     position: absolute;
-    bottom: 0px; 
+    bottom: 70px; /* 戻るボタンの上に配置 */
     left: 0;
     width: 100%;
     padding: 10px 0;
     background: rgba(0, 0, 0, 0.5);
     justify-content: space-around;
     z-index: 50;
+    height: 60px; /* 高さを設定 */
 }
+
+/* モバイル時の調整 */
 @media (max-width: 600px) {
     #mobile-controls {
-        display: flex; 
+        display: flex; /* モバイルでのみ表示 */
     }
     #game-container {
+        /* モバイル時: status-bar(50px) + flow-button(70px) + mobile-controls(80px) = 200px を引く */
         height: calc(100vh - 60px); 
         border-radius: 0;
     }
+    #game-area {
+        /* モバイル時: 100% - 50px(status) - 70px(flow) - 80px(mobile-controls) */
+        height: calc(100% - 50px - 70px - 80px);
+    }
     #player {
         width: 70px;
-        bottom: 70px; 
+        bottom: 70px + 60px; /* 戻るボタン(70px) + モバイルボタンの底(60px)の上に配置 */
+    }
+    /* モバイル時、オーバーレイを '戻るボタン' の上端に合わせる */
+    #overlay {
+        height: calc(100% - 70px);
     }
 }
 
-/* flow-button-container (変更なし) */
+
+/* flow-button-container */
 #flow-button-container {
+    /* 🔴 修正: 絶対位置でゲームコンテナの最下部に固定する */
     position: absolute;
     bottom: 0; 
     left: 0;
@@ -200,10 +214,9 @@ body {
     display: flex;
     justify-content: center;
     padding: 8px 0;
-    background-color: rgba(255, 255, 255, 0.1); 
-    z-index: 100;
+    background-color: #dcc4ab; /* 背景色を追加し、オーバーレイから分離 */
+    z-index: 100; /* 常に最前面 */
     min-height: 50px; 
-    /* ★追加: 上部に影をつけ、ゲームエリアと分離させる */
     box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -223,3 +236,5 @@ body {
 #return-to-flow-button:hover {
     background-color: #6AA84F;
 }
+
+/* 🔴 削除: 不要でHTMLに存在しない #game-controls-mobile のスタイルを削除しました */

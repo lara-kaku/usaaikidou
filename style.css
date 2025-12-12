@@ -461,8 +461,8 @@ select {
 
 /* 診断タイトルコンテナ */
 .flow-main-title {
-    background-color: #d9efa6; 
-    border: 3px solid #ffcc80;
+    background-color: #d4e2f4; 
+    border: 3px solid #ff80d7;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 30px;
@@ -486,7 +486,7 @@ select {
 .flow-main-title p {
     font-family: 'Kiwi Maru', serif;
     font-size: 1.5rem;
-    color: #0e6604;
+    color: #010002;
     margin: 0;
     padding: 0;
     font-weight: bold;
@@ -689,6 +689,8 @@ footer p {
     #calendar { font-size: 0.7rem; }
     #calendar-table th, #calendar-table td { padding: 5px 2px; height: 35px; }
 }
+
+
 /* ========================================================= */
 /* 12. 3Dフリップボタン (ゲーム開始用) */
 /* ========================================================= */
@@ -774,9 +776,9 @@ a.btn-3d-flip.btn-3d-flip2:hover .btn-3d-flip-box2 {
 
 /* --- ゲームボタン用の緑色デザイン (Greeen Theme) --- */
 .btn-3d-flip-box-face--front-game {
-  color: #fff; 
-  border: 2px solid #33691e; /* 濃い緑の枠線 */
-  background: #558B2F; /* 緑の背景 */
+  color: #f2edf5; 
+  border: 2px solid #034138; 
+  background: #b61889; 
   font-size: 1.1em;
 }
 
@@ -791,8 +793,8 @@ a.btn-3d-flip.btn-3d-flip2:hover .btn-3d-flip-box2 {
   transform-origin: 0 0;
 
   color: #fff;
-  border: 2px solid #285417; /* さらに濃い緑の枠線 */
-  background: #33691E; /* フリップ後の色（より濃く） */
+  border: 2px solid #285417; 
+  background: #1565a7; /* フリップ後の色 */
   font-size: 1.1em;
 }
 @media screen and (max-width: 600px) {
